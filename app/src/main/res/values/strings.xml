@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Example</string>
+    <string name="welcome_logo">Welcome logo</string>
+    <string name="number_composition">Состав числа</string>
+    <string name="rules_game">Правила игры: Перед Вам выражение: по середине сумма, далее известное слагаемое и неизвестное. Требуется выбрать праавильное число из предложенных 6 числе\n\nПример: Сумма 12, известное число  7 правильный ответ 5</string>
+    <string name="button_begin">НАЧИНАЕМ</string>
+    <string name="select_level">Выберете уровень:</string>
+    <string name="test">ТЕСТОВЫЙ</string>
+    <string name="easy">ЛЕГКИЙ</string>
+    <string name="normal">СРЕДНИЙ</string>
+    <string name="hard">ТЯЖЕЛЫЙ</string>
+    <string name="correct_answers">Правильных ответов %s (минимум %s)</string>
+    <string name="game_over">Game over</string>
+    <string name="tl_corrected_answers">Необхлдимое количество правильных ответов %s</string>
+    <string name="score">Ваш счет %s</string>
+    <string name="min_percent">Необходимый процент правильных ответов: %s</string>
+    <string name="percent_corrected_answers">Процент правильных ответов: %s</string>
+    <string name="again_begin">ПОПРОБЫВАТЬ СНОВА</string>
 </resources>
