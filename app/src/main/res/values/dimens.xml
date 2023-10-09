@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_tv_welcome_fragment">16dp</dimen>
+    <dimen name="margin_tv_game_over">8dp</dimen>
+</resources>
