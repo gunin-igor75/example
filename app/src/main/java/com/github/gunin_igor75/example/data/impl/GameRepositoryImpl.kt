@@ -37,7 +37,7 @@ object GameRepositoryImpl : GameRepository {
                     10,
                     3,
                     50,
-                    8
+                    20
                 )
             }
             EASY -> {
@@ -45,13 +45,13 @@ object GameRepositoryImpl : GameRepository {
                     10,
                     10,
                     70,
-                    60
+                    70
                 )
             }
             NORMAL -> {
                 GameSettings(
                     20,
-                    20,
+                    15,
                     80,
                     40
                 )
@@ -59,7 +59,7 @@ object GameRepositoryImpl : GameRepository {
             HARD -> {
                 GameSettings(
                     30,
-                    30,
+                    17,
                     90,
                     40
                 )

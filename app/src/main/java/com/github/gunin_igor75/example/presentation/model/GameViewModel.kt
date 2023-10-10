@@ -2,9 +2,9 @@ package com.github.gunin_igor75.example.presentation.model
 
 import android.app.Application
 import android.os.CountDownTimer
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.github.gunin_igor75.example.R
 import com.github.gunin_igor75.example.data.impl.GameRepositoryImpl
 import com.github.gunin_igor75.example.domain.entety.GameResult
@@ -15,16 +15,15 @@ import com.github.gunin_igor75.example.domain.usecases.GenerateQuestionUseCase
 import com.github.gunin_igor75.example.domain.usecases.GetGameSettingsUseCase
 
 
-class GameViewModel(application: Application) : AndroidViewModel(application) {
+class GameViewModel(
+    private val level: Level,
+    private val application: Application
+) :ViewModel() {
     private val gameRepository = GameRepositoryImpl
 
     private val generateQuestionUseCase = GenerateQuestionUseCase(gameRepository)
 
     private val getGameSettingsUseCase = GetGameSettingsUseCase(gameRepository)
-
-    private val context = application
-
-    private lateinit var level: Level
 
     private lateinit var gameSettings: GameSettings
 
@@ -66,10 +65,11 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     val gameResult: LiveData<GameResult>
         get() = _gameResult
 
-    fun startGame(level: Level) {
-        getGameSettings(level)
+    fun startGame() {
+        getGameSettings()
         startTimer(gameSettings.gameTimeInSeconds)
         getQuestion()
+        updateProgress()
     }
 
     fun selectAnswer(number: Int) {
@@ -80,16 +80,17 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     private fun updateProgress() {
         val percent = calculatePercent()
-        _percentCorrectedAnswer.value = percent
-        _progressAnswer.value = String.format(
-            context.getString(R.string.correct_answers),
+        _percentCorrectedAnswer.value = percent // progressbar
+        _progressAnswer.value = String.format( // textview
+            application.getString(R.string.correct_answers),
             countAnswer, gameSettings.minCountOfRightAnswers
         )
-        _enoughCount.value = countAnswer >= gameSettings.minCountOfRightAnswers
-        _enoughPercent.value = percent >= gameSettings.minPercentOfRightAnswers
+        _enoughCount.value = countAnswer >= gameSettings.minCountOfRightAnswers // color textview
+        _enoughPercent.value = percent >= gameSettings.minPercentOfRightAnswers // color progressbar
     }
 
     private fun calculatePercent(): Int {
+        if (countQuestions == 0) return 0
         return ((countAnswer / countQuestions.toDouble()) * 100).toInt()
     }
 
@@ -100,8 +101,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         countQuestions++
     }
 
-    private fun getGameSettings(level: Level) {
-        this.level = level
+    private fun getGameSettings() {
         this.gameSettings = getGameSettingsUseCase(level)
         _minPercent.value = gameSettings.minPercentOfRightAnswers
     }
@@ -126,7 +126,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun getFormatTime(millSecond: Long): String {
-        val second = millSecond * MILLI_SECOND
+        val second = millSecond / MILLI_SECOND
         val minute = second / SECOND_MINUTE
         val remainderSecond = second - minute * SECOND_MINUTE
         return String.format("%02d:%02d", minute, remainderSecond)
@@ -136,7 +136,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         _gameResult.value = GameResult(
             enoughCount.value == true && enoughPercent.value == true,
             countAnswer,
-            countQuestions,
+            calculatePercent(),
             gameSettings
         )
     }

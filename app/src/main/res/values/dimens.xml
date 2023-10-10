@@ -2,4 +2,5 @@
 <resources>
     <dimen name="margin_tv_welcome_fragment">16dp</dimen>
     <dimen name="margin_tv_game_over">8dp</dimen>
+    <dimen name="text_size_game_over">18sp</dimen>
 </resources>

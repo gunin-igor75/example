@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment
 import com.github.gunin_igor75.example.R
 import com.github.gunin_igor75.example.databinding.FragmentLevelSelectionBinding
 import com.github.gunin_igor75.example.domain.entety.Level
+import com.github.gunin_igor75.example.domain.entety.Level.EASY
+import com.github.gunin_igor75.example.domain.entety.Level.HARD
+import com.github.gunin_igor75.example.domain.entety.Level.NORMAL
+import com.github.gunin_igor75.example.domain.entety.Level.TEST
 
 class LevelSelectionFragment : Fragment() {
 
@@ -33,18 +37,18 @@ class LevelSelectionFragment : Fragment() {
     private fun onClickChoseLevel() {
         with (binding) {
             btTest.setOnClickListener {
-                launchGameFragment(Level.TEST)
+                launchGameFragment(TEST)
             }
             btEasy.setOnClickListener {
-                launchGameFragment(Level.EASY)
+                launchGameFragment(EASY)
             }
 
             btNormal.setOnClickListener {
-                launchGameFragment(Level.NORMAL)
+                launchGameFragment(NORMAL)
             }
 
             btHard.setOnClickListener {
-                launchGameFragment(Level.HARD)
+                launchGameFragment(HARD)
             }
         }
     }
