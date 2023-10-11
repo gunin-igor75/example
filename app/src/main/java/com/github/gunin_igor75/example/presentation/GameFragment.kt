@@ -2,7 +2,6 @@ package com.github.gunin_igor75.example.presentation
 
 import android.R.color
 import android.content.res.ColorStateList
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,22 +11,23 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.github.gunin_igor75.example.R
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.github.gunin_igor75.example.databinding.FragmentGameBinding
 import com.github.gunin_igor75.example.domain.entety.GameResult
-import com.github.gunin_igor75.example.domain.entety.Level
 import com.github.gunin_igor75.example.presentation.model.GameViewModel
 import com.github.gunin_igor75.example.presentation.model.GameViewModelFactory
 
 class GameFragment : Fragment() {
     private var _binding: FragmentGameBinding? = null
-    private lateinit var level: Level
     private lateinit var tvTimer: TextView
     private lateinit var tvNumberLeft: TextView
     private lateinit var tvSum: TextView
     private lateinit var tvNumberQuestion: TextView
     private lateinit var tvProgressAnswer: TextView
     private lateinit var pbAnswer: ProgressBar
+
+    private val args by navArgs<GameFragmentArgs>()
 
     private val tvOptions: List<TextView> by lazy {
         mutableListOf<TextView>().apply {
@@ -42,7 +42,7 @@ class GameFragment : Fragment() {
 
     private val viewModelFactory by lazy {
         GameViewModelFactory(
-            level,
+            args.level,
             requireActivity().application
         )
     }
@@ -65,11 +65,6 @@ class GameFragment : Fragment() {
         return binding.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        parseArgs()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
@@ -82,20 +77,6 @@ class GameFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-
-    private fun parseArgs() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            requireArguments().getParcelable(KEY_LEVEL, Level::class.java)?.let {
-                level = it
-            }
-        } else {
-            requireArguments().getParcelable<Level>(KEY_LEVEL)?.let {
-                level = it
-            }
-        }
-
     }
 
     private fun initView() {
@@ -162,26 +143,13 @@ class GameFragment : Fragment() {
     }
 
     private fun launchFinishFragment(gameResult: GameResult) {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, FinishFragment.newInstance(gameResult))
-            .addToBackStack(null)
-            .commit()
+        findNavController().navigate(
+            GameFragmentDirections.actionGameFragmentToFinishFragment(gameResult)
+        )
     }
 
     private fun getColorByState(state: Boolean): Int {
         val colorId = if (state) color.holo_green_light else color.holo_red_light
         return ContextCompat.getColor(requireContext(), colorId)
-    }
-
-    companion object {
-        private const val KEY_LEVEL = "level"
-        const val NAME = "GameFragment"
-        fun newInstance(level: Level): GameFragment {
-            return GameFragment().apply {
-                arguments = Bundle().apply {
-                    putParcelable(KEY_LEVEL, level)
-                }
-            }
-        }
     }
 }

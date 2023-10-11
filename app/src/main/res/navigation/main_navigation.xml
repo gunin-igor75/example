@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.github.gunin_igor75.example.presentation.WelcomeFragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_levelSelectionFragment"
+            app:destination="@id/levelSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/levelSelectionFragment"
+        android:name="com.github.gunin_igor75.example.presentation.LevelSelectionFragment"
+        android:label="LevelSelectionFragment" >
+        <action
+            android:id="@+id/action_levelSelectionFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.github.gunin_igor75.example.presentation.GameFragment"
+        android:label="GameFragment" >
+        <action
+            android:id="@+id/action_gameFragment_to_finishFragment"
+            app:destination="@id/finishFragment"
+            app:popUpTo="@id/gameFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="level"
+            app:argType="com.github.gunin_igor75.example.domain.entety.Level" />
+    </fragment>
+    <fragment
+        android:id="@+id/finishFragment"
+        android:name="com.github.gunin_igor75.example.presentation.FinishFragment"
+        android:label="FinishFragment" >
+        <argument
+            android:name="gameResult"
+            app:argType="com.github.gunin_igor75.example.domain.entety.GameResult" />
+    </fragment>
+</navigation>
