@@ -1,4 +1,4 @@
-package com.github.gunin_igor75.example.domain.entety
+package com.github.gunin_igor75.example.domain.entity
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

@@ -1,9 +1,9 @@
 package com.github.gunin_igor75.example.data.impl
 
-import com.github.gunin_igor75.example.domain.entety.GameSettings
-import com.github.gunin_igor75.example.domain.entety.Level
-import com.github.gunin_igor75.example.domain.entety.Level.*
-import com.github.gunin_igor75.example.domain.entety.Question
+import com.github.gunin_igor75.example.domain.entity.GameSettings
+import com.github.gunin_igor75.example.domain.entity.Level
+import com.github.gunin_igor75.example.domain.entity.Level.*
+import com.github.gunin_igor75.example.domain.entity.Question
 import com.github.gunin_igor75.example.domain.repository.GameRepository
 import kotlin.math.max
 import kotlin.math.min

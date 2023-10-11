@@ -16,4 +16,5 @@
     <string name="min_percent">Необходимый процент правильных ответов: %s</string>
     <string name="percent_corrected_answers">Процент правильных ответов: %s</string>
     <string name="again_begin">ПОПРОБЫВАТЬ СНОВА</string>
+    <string name="question">\?</string>
 </resources>

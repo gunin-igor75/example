@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.github.gunin_igor75.example.R
 import com.github.gunin_igor75.example.databinding.FragmentFinishBinding
 
 class FinishFragment : Fragment() {
@@ -42,28 +41,7 @@ class FinishFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initView()
         clickListener()
-        settingResult()
-    }
-
-    private fun settingResult() {
-        val image = getImageByState()
-        ivLogoGameOver.setImageResource(image)
-        tvEnoughAnswers.text = String.format(
-            getString(R.string.tl_corrected_answers),
-            args.gameResult.gameSettings.minCountOfRightAnswers.toString()
-        )
-        tvScore.text = String.format(
-            getString(R.string.score),
-            args.gameResult.countRightOfAnswers.toString()
-        )
-        tvEnoughPercent.text = String.format(
-            getString(R.string.min_percent),
-            args.gameResult.gameSettings.minPercentOfRightAnswers.toString()
-        )
-        tvPercent.text = String.format(
-            getString(R.string.percent_corrected_answers),
-            args.gameResult.countOfRightPercent.toString()
-        )
+        binding.gameResult = args.gameResult
     }
 
     override fun onDestroyView() {
@@ -86,9 +64,5 @@ class FinishFragment : Fragment() {
 
     private fun retryGame() {
         findNavController().popBackStack()
-    }
-
-    private fun getImageByState(): Int {
-        return if (args.gameResult.winner) R.drawable.victory else R.drawable.loss
     }
 }

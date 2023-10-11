@@ -7,10 +7,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.gunin_igor75.example.R
 import com.github.gunin_igor75.example.data.impl.GameRepositoryImpl
-import com.github.gunin_igor75.example.domain.entety.GameResult
-import com.github.gunin_igor75.example.domain.entety.GameSettings
-import com.github.gunin_igor75.example.domain.entety.Level
-import com.github.gunin_igor75.example.domain.entety.Question
+import com.github.gunin_igor75.example.domain.entity.GameResult
+import com.github.gunin_igor75.example.domain.entity.GameSettings
+import com.github.gunin_igor75.example.domain.entity.Level
+import com.github.gunin_igor75.example.domain.entity.Question
 import com.github.gunin_igor75.example.domain.usecases.GenerateQuestionUseCase
 import com.github.gunin_igor75.example.domain.usecases.GetGameSettingsUseCase
 

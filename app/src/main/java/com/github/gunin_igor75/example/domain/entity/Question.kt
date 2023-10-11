@@ -1,4 +1,4 @@
-package com.github.gunin_igor75.example.domain.entety
+package com.github.gunin_igor75.example.domain.entity
 
 data class Question (
     val sum: Int,

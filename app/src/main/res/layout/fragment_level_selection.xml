@@ -1,41 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+<layout>
 
-    <TextView
-        android:id="@+id/tv_select_level"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/select_level"
-        android:textSize="24sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <Button
-        android:id="@+id/bt_test"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/test" />
+        <TextView
+            android:id="@+id/tv_select_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/select_level"
+            android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/bt_easy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:text="@string/easy" />
+        <Button
+            android:id="@+id/bt_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test" />
 
-    <Button
-        android:id="@+id/bt_normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_orange_light"
-        android:text="@string/normal" />
+        <Button
+            android:id="@+id/bt_easy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="@string/easy" />
 
-    <Button
-        android:id="@+id/bt_hard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_red_light"
-        android:text="@string/hard" />
-</LinearLayout>
+        <Button
+            android:id="@+id/bt_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_orange_light"
+            android:text="@string/normal" />
+
+        <Button
+            android:id="@+id/bt_hard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="@string/hard" />
+    </LinearLayout>
+</layout>

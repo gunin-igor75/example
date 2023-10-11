@@ -31,7 +31,7 @@
             app:popUpToInclusive="true" />
         <argument
             android:name="level"
-            app:argType="com.github.gunin_igor75.example.domain.entety.Level" />
+            app:argType="com.github.gunin_igor75.example.domain.entity.Level" />
     </fragment>
     <fragment
         android:id="@+id/finishFragment"
@@ -39,6 +39,6 @@
         android:label="FinishFragment" >
         <argument
             android:name="gameResult"
-            app:argType="com.github.gunin_igor75.example.domain.entety.GameResult" />
+            app:argType="com.github.gunin_igor75.example.domain.entity.GameResult" />
     </fragment>
 </navigation>

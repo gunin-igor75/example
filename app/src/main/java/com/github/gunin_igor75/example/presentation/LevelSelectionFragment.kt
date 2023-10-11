@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.github.gunin_igor75.example.databinding.FragmentLevelSelectionBinding
-import com.github.gunin_igor75.example.domain.entety.Level
-import com.github.gunin_igor75.example.domain.entety.Level.EASY
-import com.github.gunin_igor75.example.domain.entety.Level.HARD
-import com.github.gunin_igor75.example.domain.entety.Level.NORMAL
-import com.github.gunin_igor75.example.domain.entety.Level.TEST
+import com.github.gunin_igor75.example.domain.entity.Level
+import com.github.gunin_igor75.example.domain.entity.Level.EASY
+import com.github.gunin_igor75.example.domain.entity.Level.HARD
+import com.github.gunin_igor75.example.domain.entity.Level.NORMAL
+import com.github.gunin_igor75.example.domain.entity.Level.TEST
 
 class LevelSelectionFragment : Fragment() {
 

@@ -3,7 +3,7 @@ package com.github.gunin_igor75.example.presentation.model
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.github.gunin_igor75.example.domain.entety.Level
+import com.github.gunin_igor75.example.domain.entity.Level
 
 class GameViewModelFactory(
     private val level: Level,
