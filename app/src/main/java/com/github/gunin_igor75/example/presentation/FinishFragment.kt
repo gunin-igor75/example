@@ -19,10 +19,10 @@ class FinishFragment : Fragment() {
     private var _binding: FragmentFinishBinding? = null
     private lateinit var gameResult: GameResult
     private lateinit var ivLogoGameOver: ImageView
-    private lateinit var tvCorrectAnswers: TextView
+    private lateinit var tvEnoughAnswers: TextView
     private lateinit var tvScore: TextView
-    private lateinit var tvMinPercent: TextView
-    private lateinit var tvPercentCorrectedAnswers: TextView
+    private lateinit var tvEnoughPercent: TextView
+    private lateinit var tvPercent: TextView
     private lateinit var btAgainBegin: Button
     private val binding: FragmentFinishBinding
         get() = _binding ?: throw RuntimeException("FragmentFinishBinding is null")
@@ -52,7 +52,7 @@ class FinishFragment : Fragment() {
     private fun settingResult() {
         val image = getImageByState()
         ivLogoGameOver.setImageResource(image)
-        tvCorrectAnswers.text = String.format(
+        tvEnoughAnswers.text = String.format(
             getString(R.string.tl_corrected_answers),
             gameResult.gameSettings.minCountOfRightAnswers.toString()
         )
@@ -60,11 +60,11 @@ class FinishFragment : Fragment() {
             getString(R.string.score),
             gameResult.countRightOfAnswers.toString()
         )
-        tvMinPercent.text = String.format(
+        tvEnoughPercent.text = String.format(
             getString(R.string.min_percent),
             gameResult.gameSettings.minPercentOfRightAnswers.toString()
         )
-        tvPercentCorrectedAnswers.text = String.format(
+        tvPercent.text = String.format(
             getString(R.string.percent_corrected_answers),
             gameResult.countOfRightPercent.toString()
         )
@@ -77,10 +77,10 @@ class FinishFragment : Fragment() {
 
     private fun initView() {
         ivLogoGameOver = binding.ivLogoGameOver
-        tvCorrectAnswers = binding.tvCorrectAnswers
+        tvEnoughAnswers = binding.tvEnoughAnswers
         tvScore = binding.tvScore
-        tvMinPercent = binding.tvMinPercent
-        tvPercentCorrectedAnswers = binding.tvPercentCorrectedAnswers
+        tvEnoughPercent = binding.tvEnoughPercent
+        tvPercent = binding.tvPercent
         btAgainBegin = binding.btAgainBegin
     }
 
